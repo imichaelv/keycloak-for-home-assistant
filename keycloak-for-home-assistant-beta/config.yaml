@@ -10,7 +10,6 @@ arch:
   - i386
 startup: "services"
 boot: "auto"
-image: "local/keycloak"
 ports:
   8080/tcp: 8080
   8443/tcp: 8443
