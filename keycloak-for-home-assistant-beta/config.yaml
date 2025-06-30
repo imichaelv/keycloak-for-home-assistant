@@ -17,7 +17,5 @@ ports:
 environment:
   KEYCLOAK_ADMIN: "admin"
   KEYCLOAK_ADMINPASSWORD: "admin"
-options:
-schema:
 ingress: false
 host_network: false
