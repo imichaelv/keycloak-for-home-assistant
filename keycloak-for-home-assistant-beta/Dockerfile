@@ -1,6 +1,4 @@
 ARG BUILD_FROM
-
-FROM quay.io/keycloak/keycloak:26.2.5 AS keycloak
 FROM $BUILD_FROM as HA_BASE
 
 ENV KEYCLOAK_VERSION=26.2.5
