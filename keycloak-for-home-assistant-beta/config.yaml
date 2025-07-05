@@ -18,3 +18,4 @@ environment:
   KEYCLOAK_ADMINPASSWORD: "admin"
 ingress: false
 host_network: false
+init: false
