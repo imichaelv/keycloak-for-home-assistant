@@ -1,8 +1,9 @@
 ARG BUILD_FROM
-ENV KEYCLOAK_VERSION=26.2.5
 
 FROM quay.io/keycloak/keycloak:26.2.5 AS keycloak
 FROM $BUILD_FROM as HA_BASE
+
+ENV KEYCLOAK_VERSION=26.2.5
 
 RUN apk add --no-cache openjdk17 curl unzip
 
