@@ -9,7 +9,6 @@ arch:
   - armv7
   - i386
 startup: "services"
-init: true
 boot: "auto"
 ports:
   8080/tcp: 8080
