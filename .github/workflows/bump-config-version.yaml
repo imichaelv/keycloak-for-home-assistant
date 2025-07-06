@@ -49,3 +49,5 @@ jobs:
           git add keycloak-for-home-assistant/
           git commit -m "chore: promote beta to stable with version bump"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
