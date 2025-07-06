@@ -1,0 +1,24 @@
+name: "Keycloak for Home Assistant"
+description: "Keycloak addon for Home Assistant"
+version: "0.0.7"
+slug: "keycloak_for_home_assistant"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: "services"
+boot: "auto"
+ports:
+  8080/tcp: 8080
+  8443/tcp: 8443
+options:
+  KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
+  KC_BOOTSTRAP_ADMIN_PASSWORD: "admin"
+schema:
+  KC_BOOTSTRAP_ADMIN_USERNAME: str
+  KC_BOOTSTRAP_ADMIN_PASSWORD: str
+ingress: false
+host_network: false
+init: false
