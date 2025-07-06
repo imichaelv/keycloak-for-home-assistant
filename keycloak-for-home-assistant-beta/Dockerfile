@@ -1,4 +1,5 @@
-ARG KEYCLOAK_VERSION=26.2.5 # renovate: depName=keycloak/keycloak
+# renovate: depName=keycloak/keycloak
+ARG KEYCLOAK_VERSION=26.2.5
 ARG BUILD_FROM
 FROM $BUILD_FROM as HA_BASE
 
