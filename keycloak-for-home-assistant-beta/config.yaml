@@ -13,9 +13,12 @@ boot: "auto"
 ports:
   8080/tcp: 8080
   8443/tcp: 8443
-environment:
+options:
   KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
   KC_BOOTSTRAP_ADMIN_PASSWORD: "admin"
+schema:
+  KC_BOOTSTRAP_ADMIN_USERNAME: str
+  KC_BOOTSTRAP_ADMIN_PASSWORD: str
 ingress: false
 host_network: false
 init: false

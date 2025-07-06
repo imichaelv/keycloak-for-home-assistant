@@ -1,0 +1,7 @@
+configuration:
+  KC_BOOTSTRAP_ADMIN_USERNAME:
+    name: First time login username
+    description: Set up a first time username. But remove this user after initializing.
+  KC_BOOTSTRAP_ADMIN_PASSWORD:
+    name: First time login password
+    description: Setup a first time password. But remove this password after initializing.
