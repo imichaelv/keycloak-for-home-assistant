@@ -15,7 +15,7 @@ jobs:
           fetch-dept: 0
       - name: Set up Git
         run: |
-          git config user.name "github-actions[bot]
+          git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Copy beta files to stable
