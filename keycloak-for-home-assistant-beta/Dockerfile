@@ -1,7 +1,9 @@
+ARG KEYCLOAK_VERSION=26.2.5 # renovate: depName=keycloak/keycloak
 ARG BUILD_FROM
 FROM $BUILD_FROM as HA_BASE
 
-ENV KEYCLOAK_VERSION=26.2.5
+ARG KEYCLOAK_VERSION
+ENV KEYCLOAK_VERSION=${KEYCLOAK_VERSION}
 
 RUN apk add --no-cache openjdk17 curl unzip
 
