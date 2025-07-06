@@ -38,6 +38,19 @@ jobs:
 
           echo "Old version: $OLD_VERSION"
           echo "New version: $NEW_VERSION"
+      - name: Bump version to beta config.yml
+        run: | 
+          file="keycloak-for-home-assistant-beta/config.yaml"
+          if [ ! -f "$file" ]; then echo "Missing config.yaml in stable."; exit 1; fi
+          
+          OLD_VERSION=$(yq '.version' "$file" | tr -d '"')
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$OLD_VERSION"
+          NEW_VERSION="$MAJOR.$MINOR.$((PATCH+1))"
+
+          yq -i ".version = \"$NEW_VERSION\"" "$file"
+
+          echo "Old version: $OLD_VERSION"
+          echo "New version: $NEW_VERSION"
 
       - name: Replace name and slug for stable version
         run: |
