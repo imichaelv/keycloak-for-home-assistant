@@ -5,3 +5,6 @@ configuration:
   KC_BOOTSTRAP_ADMIN_PASSWORD:
     name: First time login password
     description: Setup a first time password. But remove this password after initializing.
+  HOSTNAME:
+    name: The hostname for Keycloak
+    description: The url for keycloak
