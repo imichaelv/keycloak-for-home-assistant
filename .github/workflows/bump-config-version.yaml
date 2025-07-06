@@ -35,6 +35,11 @@ jobs:
           echo "Old version: $OLD_VERSION"
           echo "New version: $NEW_VERSION"
 
+      - name: Replace name and slug for stable version
+        run: |
+          file="keycloak-for-home-assistant/config.yaml"
+          yq -i '.name = "Keycloak for Home Assistant"' "$file"
+          yq -i '.slug = "keycloak_for_home_assistant"' "$file"
       - name: Commit and push changes
         run: |
           git add keycloak-for-home-assistant/
