@@ -10,9 +10,5 @@ RUN curl -L https://github.com/keycloak/keycloak/releases/download/${KEYCLOAK_VE
     && mv /opt/keycloak-${KEYCLOAK_VERSION} /opt/keycloak \
     && rm /keycloak.zip
 
-COPY run.sh /run.sh
-RUN chmod a+x /run.sh
-
-
-
-CMD ["/run.sh"]
+COPY run.sh /etc/services.d/keycloak/run
+RUN chmod a+x /etc/services.d/keycloak/run

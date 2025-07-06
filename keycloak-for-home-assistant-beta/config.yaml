@@ -1,6 +1,6 @@
 name: "Keycloak for Home Assistant Beta"
 description: "Keycloak addon for Home Assistant"
-version: "0.0.4"
+version: "0.0.5"
 slug: "keycloak_for_home_assistant-beta"
 arch:
   - aarch64
@@ -14,8 +14,8 @@ ports:
   8080/tcp: 8080
   8443/tcp: 8443
 environment:
-  KEYCLOAK_ADMIN: "admin"
-  KEYCLOAK_ADMINPASSWORD: "admin"
+  KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
+  KC_BOOTSTRAP_ADMIN_PASSWORD: "admin"
 ingress: false
 host_network: false
 init: false
