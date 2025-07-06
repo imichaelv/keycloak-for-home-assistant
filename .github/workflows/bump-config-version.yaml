@@ -1,0 +1,42 @@
+name: Bump config.yaml version
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-dept: 0
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Copy beta files to stable
+        run: |
+          cp -r keycloak-for-home-assistant-beta/* keycloak-for-home-assistant/
+      - name: Bump version to stable config.yml
+        run: | 
+          file="keycloak-for-home-assistant/config.yaml"
+          if [ ! -f "$file" ]; then echo "Missing config.yaml in stable."; exit 1; fi
+          
+          OLD_VERSION=$(yq '.version' "$file" | tr -d '"')
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$OLD_VERSION"
+          NEW_VERSION="$MAJOR.$MINOR.$((PATCH+1))"
+
+          yq -i ".version = \"$NEW_VERSION\"" "$file"
+
+          echo "Old version: $OLD_VERSION"
+          echo "New version: $NEW_VERSION"
+
+      - name: Commit and push changes
+        run: |
+          git add keycloak-for-home-assistant/
+          git commit -m "chore: promote beta to stable with version bump"
+          git push
