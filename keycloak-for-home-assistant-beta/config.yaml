@@ -15,9 +15,11 @@ ports:
 options:
   KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
   KC_BOOTSTRAP_ADMIN_PASSWORD: "admin"
+  HOSTNAME:
 schema:
   KC_BOOTSTRAP_ADMIN_USERNAME: str
   KC_BOOTSTRAP_ADMIN_PASSWORD: str
+  HOSTNAME: str
 ingress: false
 host_network: false
 init: false
