@@ -1,4 +1,4 @@
-# renovate: datasource=github-releases depName=keycloak/keycloak packageName=keycloak versioning=semver
+# renovate: datasource=github-releases depName=keycloak/keycloak
 ARG KEYCLOAK_VERSION=26.2.5
 ARG BUILD_FROM
 FROM $BUILD_FROM as HA_BASE
