@@ -6,7 +6,7 @@ FROM $BUILD_FROM as HA_BASE
 ARG KEYCLOAK_VERSION
 ENV KEYCLOAK_VERSION=${KEYCLOAK_VERSION}
 
-RUN apk add --no-cache openjdk17 curl unzip
+RUN apk add --no-cache openjdk17 curl unzip mysql-client
 
 RUN curl -L https://github.com/keycloak/keycloak/releases/download/${KEYCLOAK_VERSION}/keycloak-${KEYCLOAK_VERSION}.zip -o /keycloak.zip \
     && unzip /keycloak.zip -d /opt \
