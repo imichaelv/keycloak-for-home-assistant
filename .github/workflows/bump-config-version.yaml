@@ -41,7 +41,7 @@ jobs:
       - name: Bump version to beta config.yml
         run: | 
           file="keycloak-for-home-assistant-beta/config.yaml"
-          if [ ! -f "$file" ]; then echo "Missing config.yaml in stable."; exit 1; fi
+          if [ ! -f "$file" ]; then echo "Missing config.yaml in beta."; exit 1; fi
           
           OLD_VERSION=$(yq '.version' "$file" | tr -d '"')
           IFS='.' read -r MAJOR MINOR PATCH <<< "$OLD_VERSION"
