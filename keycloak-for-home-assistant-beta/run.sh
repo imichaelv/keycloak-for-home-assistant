@@ -8,4 +8,9 @@ export KC_HTTP_ENABLED=true
   --http-port=8080 \
   --hostname-strict=false \
   --http-enabled=true \
-  --hostname $(bashio::config 'HOSTNAME')
+  --hostname $(bashio::config "HOSTNAME") \
+  --db $(bashio::config "DATABASE_TYPE") \
+  --db-username $(bashio::services "mysql" "username") \
+  --db-password $(bashio::services "mysql" "password") \
+  --db-url-host $(bashio::services "mysql" "host") \
+  --db-url-port $(bashio::services "mysql" "port")

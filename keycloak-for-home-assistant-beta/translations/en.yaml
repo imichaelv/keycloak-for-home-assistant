@@ -8,3 +8,6 @@ configuration:
   HOSTNAME:
     name: The hostname for Keycloak
     description: The url for keycloak
+  DATABASE_TYPE:
+    name: Name of database e.q. mariadb
+    description: The type of database used

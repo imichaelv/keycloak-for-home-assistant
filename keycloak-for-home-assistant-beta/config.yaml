@@ -10,16 +10,20 @@ arch:
   - i386
 startup: "services"
 boot: "auto"
+services:
+  - mysql:want
 ports:
   8080/tcp: 9457
 options:
   KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
   KC_BOOTSTRAP_ADMIN_PASSWORD: "admin"
   HOSTNAME:
+  DATABASE_TYPE: 'mariadb'
 schema:
   KC_BOOTSTRAP_ADMIN_USERNAME: str
   KC_BOOTSTRAP_ADMIN_PASSWORD: str
   HOSTNAME: str
+  DATABASE_TYPE: str
 ingress: false
 host_network: false
 init: false
