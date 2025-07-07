@@ -5,7 +5,7 @@ export KC_BOOTSTRAP_ADMIN_PASSWORD=$(bashio::config 'KC_BOOTSTRAP_ADMIN_PASSWORD
 export KC_HTTP_ENABLED=true
 
 bashio::log.info "Creating 'keycloak' database if not present..."
-mysql -h $(bashio::services "mysql" "host") \
+mariadb -h $(bashio::services "mysql" "host") \
   -P $(bashio::services "mysql" "port") \
   -u $(bashio::services "mysql" "username") \
   -p $(bashio::services "mysql" "password") \
