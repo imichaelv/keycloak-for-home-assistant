@@ -1,6 +1,6 @@
 name: "Keycloak for Home Assistant"
 description: "Keycloak addon for Home Assistant"
-version: "1.1.0"
+version: "1.1.1"
 slug: "keycloak_for_home_assistant"
 arch:
   - aarch64
@@ -10,16 +10,20 @@ arch:
   - i386
 startup: "services"
 boot: "auto"
+services:
+  - mysql:want
 ports:
   8080/tcp: 9457
 options:
   KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
   KC_BOOTSTRAP_ADMIN_PASSWORD: "admin"
   HOSTNAME:
+  DATABASE_TYPE: 'mariadb'
 schema:
   KC_BOOTSTRAP_ADMIN_USERNAME: str
   KC_BOOTSTRAP_ADMIN_PASSWORD: str
   HOSTNAME: str
+  DATABASE_TYPE: str
 ingress: false
 host_network: false
 init: false
