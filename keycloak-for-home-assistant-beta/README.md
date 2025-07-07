@@ -11,20 +11,17 @@
 
 # Installation
 
-Add the addon through the following button:
+1. Add the addon through the following button:
 
-[![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fimichaelv%2Fkeycloak-for-home-assistant)
+    [![Open your Home Assistant instance and show the add add-on repository dialog with a specific repository URL pre-filled.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fimichaelv%2Fkeycloak-for-home-assistant)
 
-This will add this repository in your addons list.
-
-## Before first run.
-
-In the config you can alter the first-time use username and password this is used to create a default user so you can login and setup the environment of keycloak
-
-After initializing please remove this user and use your own. 
-
-By Default the username is filled with admin/admin. **This is a security risk, so therefor you can alter it before keycloak is initialized.**
-After initializing please go to the local ipaddress of home assistant and use the port described in the config file to adjust the admin user.
+    This will add this repository in your addons list.
+2. Install PhpMyAdmin from Home Assistant Addon Store
+3. Execute following command to create a database for keycloak<br/>
+    `CREATE DATABASE IF NOT EXISTS keycloak CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`
+4. Modify the configuration before first run. (Set up a random user and password for one-time admin creation, keep in mind, this user is temporary. default is admin/admin but this user needs to removed after first login)
+5. With Nginx Proxy Manager create a new Host, and fill this host in the config of the addon
+6. Start the application and create a new user inside keycloak and remove the default temporary admin user.
 
 
 ### Examples of configuration with ActualBudget
