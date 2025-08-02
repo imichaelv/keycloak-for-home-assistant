@@ -61,6 +61,7 @@ jobs:
       - name: Commit and push changes
         run: |
           git add keycloak-for-home-assistant/
+          git add keycloak-for-home-assistant-beta/
           git commit -m "chore: promote beta to stable with version bump"
           git push
         env:
