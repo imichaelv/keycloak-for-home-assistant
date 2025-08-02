@@ -16,6 +16,11 @@ jobs:
         with:
           fetch-depth: 0  # Ensure full history is available for tags
 
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Get current version from stable config.yaml
         id: get_version
         run: |
