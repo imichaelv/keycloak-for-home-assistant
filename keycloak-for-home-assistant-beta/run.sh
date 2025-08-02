@@ -5,7 +5,15 @@ export KC_BOOTSTRAP_ADMIN_PASSWORD=$(bashio::config 'KC_BOOTSTRAP_ADMIN_PASSWORD
 export KC_HTTP_ENABLED=true
 
 echo $(bashio::config "DATABASE_TYPE")
+echo "mysql"
 echo $(bashio::services "mysql" "username")
+echo "mariadb"
+echo $(bashio::services "mariadb" "username")
+echo "MariaDB:"
+echo $(bashio::services "MariaDB" "username")
+echo "core_mariadb:"
+echo $(bashio::services "core_mariadb" "username")
+echo "starting"
 
 /opt/keycloak/bin/kc.sh start \
   --http-port=8080 \
