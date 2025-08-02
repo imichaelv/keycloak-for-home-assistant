@@ -20,17 +20,51 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Bump version to stable config.yml
+        run: |
+          file="keycloak-for-home-assistant/config.yaml"
+          if [ ! -f "$file" ]; then echo "Missing config.yaml in stable."; exit 1; fi
+          
+          OLD_VERSION=$(yq '.version' "$file" | tr -d '"')
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$OLD_VERSION"
+          NEW_VERSION="$MAJOR.$MINOR.$((PATCH+1))"
 
+          yq -i ".version = \"$NEW_VERSION\"" "$file"
+
+          echo "Old version: $OLD_VERSION"
+          echo "New version: $NEW_VERSION"
+      - name: Bump version to beta config.yml
+        run: |
+          file="keycloak-for-home-assistant-beta/config.yaml"
+          if [ ! -f "$file" ]; then echo "Missing config.yaml in beta."; exit 1; fi
+          
+          OLD_VERSION=$(yq '.version' "$file" | tr -d '"')
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$OLD_VERSION"
+          NEW_VERSION="$MAJOR.$MINOR.$((PATCH+1))"
+
+          yq -i ".version = \"$NEW_VERSION\"" "$file"
+
+          echo "Old version: $OLD_VERSION"
+          echo "New version: $NEW_VERSION"
+
+      - name: Replace name and slug for stable version
+        run: |
+          configFile="keycloak-for-home-assistant/config.yaml"
+          yq -i '.name = "Keycloak for Home Assistant"' "$configFile"
+          yq -i '.slug = "keycloak_for_home_assistant"' "$configFile"
+
+      - name: Commit and push changes
+        run: |
+          git add keycloak-for-home-assistant/
+          git add keycloak-for-home-assistant-beta/
+          git commit -m "chore: promote beta to stable with version bump"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get current version from stable config.yaml
         id: get_version
         run: |
-          OLD_VERSION=$(yq '.version' keycloak-for-home-assistant/config.yaml | tr -d '"')
-          
-          IFS='.' read -r MAJOR MINOR PATCH <<< "$OLD_VERSION"
-          version="$MAJOR.$MINOR.$((PATCH+1))"
-          
+          version=$(yq '.version' keycloak-for-home-assistant/config.yaml | tr -d '"')
           echo "VERSION=$version" >> $GITHUB_OUTPUT
-
       - name: Create Git tag
         run: |
           git tag -a "v${{ steps.get_version.outputs.VERSION }}" -m "Release v${{ steps.get_version.outputs.VERSION }}"
