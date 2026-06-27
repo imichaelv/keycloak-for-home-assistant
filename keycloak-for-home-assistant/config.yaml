@@ -1,6 +1,6 @@
 name: "Keycloak for Home Assistant"
 description: "Keycloak addon for Home Assistant"
-version: "1.1.10"
+version: "1.1.11"
 slug: "keycloak_for_home_assistant"
 arch:
   - aarch64
