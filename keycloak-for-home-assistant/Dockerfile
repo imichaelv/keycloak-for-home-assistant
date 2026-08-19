@@ -1,5 +1,5 @@
 # renovate: datasource=github-releases depName=keycloak/keycloak packageName=keycloak/keycloak versioning=semver
-ARG KEYCLOAK_VERSION=26.6.4
+ARG KEYCLOAK_VERSION=26.7.2
 
 FROM ghcr.io/home-assistant/base:latest AS ha_base
 
